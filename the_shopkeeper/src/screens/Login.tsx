@@ -123,6 +123,10 @@ const Login = () => {
               secureTextEntry={passVisible}
               placeholder="Enter your password"
               style={styles.numberInput}
+              onChangeText={(text)=>{
+                setPassword(text);
+              }}
+              value={password}
             />
             <TouchableOpacity
               onPress={() => {
@@ -271,6 +275,10 @@ const Login = () => {
               secureTextEntry={passVisible}
               placeholder="Enter your password"
               style={styles.numberInput}
+              onChangeText={(text)=>{
+                setPassword(text);
+              }}
+              value={password}
             />
             <TouchableOpacity
               onPress={() => {
@@ -343,7 +351,7 @@ const Login = () => {
             iconColor="#fff"
           />
 
-          {/* Google Sign In Button */}
+          {/* Apple Sign In Button */}
           <MyButton
             backgroundColor={'#111e15'}
             title="Continue with Apple"
@@ -352,7 +360,7 @@ const Login = () => {
             iconColor="#fff"
           />
 
-          {/* Google Sign In Button */}
+          {/* Facebook Sign In Button */}
           <MyButton
             backgroundColor={'#0d65af'}
             title="Continue with Facebook"
@@ -409,7 +417,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   inputContainer: {
-    marginTop: 50,
+    marginTop: 40,
   },
   inputBox: {
     flexDirection: 'row',
