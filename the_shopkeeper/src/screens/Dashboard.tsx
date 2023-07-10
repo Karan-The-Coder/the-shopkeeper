@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   FlatList,
   Image,
+  SafeAreaView,
 } from 'react-native';
 import React,{useState, useEffect} from 'react';
 import {
@@ -221,8 +222,8 @@ const Dashboard = () => {
 
   const navigation: any = useNavigation();
   return (
-    <View style={styles.container}>
-      <StatusBar  translucent={true} backgroundColor={'transparent'} />
+    <SafeAreaView style={styles.container}>
+      <StatusBar  translucent={true} backgroundColor={'transparent'} barStyle={'dark-content'} />
 
       {/* Back and Menu Container */}
       <View style={styles.row1}>
@@ -297,7 +298,7 @@ const Dashboard = () => {
           <Icon name="add-circle-outline" size={35} color="#000" />
         </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

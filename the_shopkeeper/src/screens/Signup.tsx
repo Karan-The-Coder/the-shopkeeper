@@ -38,7 +38,7 @@ const Signup = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar translucent={true} backgroundColor={'transparent'} />
+      <StatusBar translucent={true} backgroundColor={'transparent'} barStyle={'dark-content'} />
       <TouchableOpacity
         onPress={() => {
           navigation.goBack();

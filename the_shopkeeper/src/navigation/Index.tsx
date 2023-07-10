@@ -13,8 +13,8 @@ const Index = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown:false}}>
-        <Stack.Screen name="Onboarding" component={Onboarding} />
-        <Stack.Screen name="Login" component={Login} />
+        {/* <Stack.Screen name="Onboarding" component={Onboarding} /> */}
+        {/* <Stack.Screen name="Login" component={Login} /> */}
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="Dashboard" component={Dashboard} />
         <Stack.Screen name="AddProduct" component={AddProduct} />
