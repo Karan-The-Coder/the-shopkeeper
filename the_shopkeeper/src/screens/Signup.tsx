@@ -305,7 +305,7 @@ const Signup = () => {
                 marginHorizontal:10
               }}>
               <FIcon name="female" size={25} color="black" style={{}} />
-              <Text style={{fontSize: responsiveFontSize(1.6),fontWeight: '400',}}>male</Text>
+              <Text style={{fontSize: responsiveFontSize(1.6),fontWeight: '400',}}>female</Text>
             </TouchableOpacity>
             <TouchableOpacity
             onPress={()=>{
@@ -350,6 +350,7 @@ const Signup = () => {
 
           {/* Signup Button */}
           <MyButton
+            onPress={()=>{navigation.navigate('Dashboard')}}
             backgroundColor={'#8585f5'}
             title="Sigup"
             iconExists={false}
@@ -362,6 +363,7 @@ const Signup = () => {
 
           {/* Google Sign In Button */}
           <MyButton
+            onPress={()=>{}}
             backgroundColor={'#1aa260'}
             title="Continue with Google"
             iconExists={true}
@@ -369,17 +371,19 @@ const Signup = () => {
             iconColor="#fff"
           />
 
-          {/* Google Sign In Button */}
+          {/* Apple Sign In Button */}
           <MyButton
+            onPress={()=>{}}
             backgroundColor={'#111e15'}
-            title="Continue with Apple"
+            title="Continue with Yahoo"
             iconExists={true}
-            iconName="apple"
+            iconName="yahoo"
             iconColor="#fff"
           />
 
-          {/* Google Sign In Button */}
+          {/* Facebook Sign In Button */}
           <MyButton
+            onPress={()=>{}}
             backgroundColor={'#0d65af'}
             title="Continue with Facebook"
             iconExists={true}
@@ -390,6 +394,7 @@ const Signup = () => {
           
           {/* Github Sign In Button */}
           <MyButton
+            onPress={()=>{}}
             backgroundColor={'#333444'}
             title="Continue with Github"
             iconExists={true}
@@ -400,6 +405,7 @@ const Signup = () => {
           
           {/* Twitter Sign In Button */}
           <MyButton
+            onPress={()=>{}}
             backgroundColor={'skyblue'}
             title="Continue with Twitter"
             iconExists={true}

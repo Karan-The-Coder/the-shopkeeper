@@ -13,14 +13,17 @@ interface ButtonOptionalProps {
     iconName: string,
     iconColor: string,
     iconExists: boolean,
+    onPress: () =>void,
 }
 
 const MyButton = (props: ButtonOptionalProps) => {
 
- const {backgroundColor, title, iconName, iconColor, iconExists} = props;
+ const {backgroundColor, title, iconName, iconColor, iconExists, onPress} = props;
 
   return (
-    <TouchableOpacity style={[styles.loginBtn, { backgroundColor: backgroundColor }]}>
+    <TouchableOpacity 
+    onPress={onPress}
+    style={[styles.loginBtn, { backgroundColor: backgroundColor }]}>
         { iconExists 
             ? (<FAicon name={iconName} size ={25} color={iconColor} style={{marginRight:20}} />) 
             : null

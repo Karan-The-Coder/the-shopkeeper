@@ -181,6 +181,7 @@ const Login = () => {
             iconExists={false}
             iconName="null"
             iconColor="null"
+            onPress={()=>{navigation.navigate('Dashboard')}}
           />
 
           {/* Or Statement */}
@@ -188,8 +189,19 @@ const Login = () => {
             <Text style={styles.orText}>Or</Text>
           </View>
 
+          {/* Twitter Sign In Button */}
+          <MyButton
+            onPress={()=>{}}
+            backgroundColor={'skyblue'}
+            title="Continue with Twitter"
+            iconExists={true}
+            iconName="twitter"
+            iconColor="#fff"
+          />
+
           {/* Google Sign In Button */}
           <MyButton
+            onPress={()=>{}}
             backgroundColor={'#1aa260'}
             title="Continue with Google"
             iconExists={true}
@@ -197,17 +209,9 @@ const Login = () => {
             iconColor="#fff"
           />
 
-          {/* Google Sign In Button */}
+          {/* Facebook Sign In Button */}
           <MyButton
-            backgroundColor={'#111e15'}
-            title="Continue with Apple"
-            iconExists={true}
-            iconName="apple"
-            iconColor="#fff"
-          />
-
-          {/* Google Sign In Button */}
-          <MyButton
+            onPress={()=>{}}
             backgroundColor={'#0d65af'}
             title="Continue with Facebook"
             iconExists={true}
@@ -335,12 +339,23 @@ const Login = () => {
             iconExists={false}
             iconName="null"
             iconColor="null"
+            onPress={()=>{navigation.navigate('Dashboard')}}
           />
 
           {/* Or Statement */}
           <View style={styles.orStatement}>
             <Text style={styles.orText}>Or</Text>
           </View>
+
+          {/* Twitter Sign In Button */}
+          <MyButton
+            onPress={()=>{}}
+            backgroundColor={'skyblue'}
+            title="Continue with Twitter"
+            iconExists={true}
+            iconName="twitter"
+            iconColor="#fff"
+          />
 
           {/* Google Sign In Button */}
           <MyButton
@@ -349,19 +364,12 @@ const Login = () => {
             iconExists={true}
             iconName="google"
             iconColor="#fff"
-          />
-
-          {/* Apple Sign In Button */}
-          <MyButton
-            backgroundColor={'#111e15'}
-            title="Continue with Apple"
-            iconExists={true}
-            iconName="apple"
-            iconColor="#fff"
+            onPress={()=>{}}
           />
 
           {/* Facebook Sign In Button */}
           <MyButton
+            onPress={()=>{}}
             backgroundColor={'#0d65af'}
             title="Continue with Facebook"
             iconExists={true}
