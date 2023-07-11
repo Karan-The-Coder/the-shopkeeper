@@ -21,7 +21,8 @@ import FAIcon from 'react-native-vector-icons/FontAwesome5';
 import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import MyButton from '../components/Button/MyButton';
 
-const AddProduct = () => {
+const AddProduct = ({route}) => {
+
   const [allProducts, setAllProducts] = useState([]);
 
   const [productName, setProductName] = useState('');
@@ -30,20 +31,40 @@ const AddProduct = () => {
   const [productQuantity, setProductQuantity] = useState('');
   const [productCategory, setProductCategory] = useState('');
 
+  const editableItem = route?.params.editableItem;
+  const comeFrom = route?.params.comeFrom;
+  const itemIndex = route?.params.itemIndex;
   const navigation: any = useNavigation();
 
   useEffect(()=>{
     getData();
+    if(comeFrom == 'editableItem'){
+      editItem();
+    }
   },[]);
+
+  const editItem = async () => {
+    try{
+      if(comeFrom == 'editableItem'){
+        setProductName(editableItem?.name);
+        setProductDesc(editableItem?.description);
+        setProductPrice(editableItem?.price);
+        setProductQuantity(editableItem?.quantity);
+        setProductCategory(editableItem?.category);
+      }
+    }catch(err){
+      console.log('Error! While editing the item', err);
+    }
+  }
 
   const getData = async () => {
     try {
       const localData:any = await AsyncStorage.getItem('ProductsList');
       const res = JSON.parse(localData);
-      if (res.length > 0) {
+      if (res?.length > 0) {
         setAllProducts(res);
       }
-      console.log(res);
+      // console.log(res);
       // console.log(allProducts);
     } catch (error) {
       console.log('Error storing array in AsyncStorage:', error);
@@ -51,6 +72,10 @@ const AddProduct = () => {
   };
 
   const addProduct = async () => {
+    if(comeFrom === 'editableItem') {
+    editProduct();
+    return;
+    }
     const products: any = [...allProducts];
     const data = {
       name: productName,
@@ -62,6 +87,22 @@ const AddProduct = () => {
     products.push(data);
     // Store the object in AsyncStorage
     await AsyncStorage.setItem('ProductsList', JSON.stringify(products));
+    navigation.goBack();
+  };
+  
+  const editProduct = async () => {
+    const products: any = [...allProducts];
+
+    products[itemIndex].name = productName;
+    products[itemIndex].description = productDesc;
+    products[itemIndex].price = productPrice;
+    products[itemIndex].quantity = productQuantity;
+    products[itemIndex].category = productCategory;
+
+    // Store the object in AsyncStorage
+    await AsyncStorage.setItem('ProductsList', JSON.stringify(products));
+    navigation.goBack();
+
   };
 
   return (
@@ -92,8 +133,9 @@ const AddProduct = () => {
         <View style={styles.inputBox}>
           <TextInput
             autoComplete="name"
+            returnKeyType="next"
             inputMode="text"
-            placeholder="Enter product name"
+            placeholder={ comeFrom === 'editableItem' ? productName :"Enter product name"}
             placeholderTextColor="gray"
             keyboardType="default"
             style={styles.numberInput}
@@ -108,6 +150,7 @@ const AddProduct = () => {
         <View style={styles.inputBox}>
           <TextInput
             // autoComplete='name'
+            returnKeyType="next"
             inputMode="text"
             placeholder="Enter product description"
             placeholderTextColor="gray"
@@ -124,6 +167,7 @@ const AddProduct = () => {
         <View style={styles.inputBox}>
           <TextInput
             // autoComplete='name'
+            returnKeyType="next"
             inputMode="numeric"
             placeholder="Enter product price"
             placeholderTextColor="gray"
@@ -140,6 +184,7 @@ const AddProduct = () => {
         <View style={styles.inputBox}>
           <TextInput
             // autoComplete='name'
+            returnKeyType="next"
             inputMode="numeric"
             placeholder="Enter product quantity"
             placeholderTextColor="gray"
@@ -176,9 +221,7 @@ const AddProduct = () => {
         iconExists={false}
         title="Add"
         backgroundColor="#8585f5"
-        onPress={() => {
-          setAllProducts([]);
-        }}
+        onPress={addProduct}
       />
     </SafeAreaView>
   );
