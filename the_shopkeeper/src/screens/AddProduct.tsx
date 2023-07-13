@@ -21,7 +21,7 @@ import FAIcon from 'react-native-vector-icons/FontAwesome5';
 import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import MyButton from '../components/Button/MyButton';
 
-const AddProduct = ({route}) => {
+const AddProduct = ({route}:any) => {
 
   const [allProducts, setAllProducts] = useState([]);
 
@@ -31,10 +31,10 @@ const AddProduct = ({route}) => {
   const [productQuantity, setProductQuantity] = useState('');
   const [productCategory, setProductCategory] = useState('');
 
-  const editableItem = route?.params.editableItem;
-  const comeFrom = route?.params.comeFrom;
-  const itemIndex = route?.params.itemIndex;
-  const navigation: any = useNavigation();
+  const editableItem:any = route?.params.editableItem;
+  const comeFrom:any = route?.params.comeFrom;
+  const itemIndex:any = route?.params.itemIndex;
+  const navigation = useNavigation();
 
   useEffect(()=>{
     getData();
@@ -59,7 +59,7 @@ const AddProduct = ({route}) => {
 
   const getData = async () => {
     try {
-      const localData:any = await AsyncStorage.getItem('ProductsList');
+      const localData : any = await AsyncStorage.getItem('ProductsList');
       const res = JSON.parse(localData);
       if (res?.length > 0) {
         setAllProducts(res);

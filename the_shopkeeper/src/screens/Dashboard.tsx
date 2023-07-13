@@ -198,7 +198,6 @@ const Dashboard = () => {
   // ];
 const isFocused = useIsFocused();
   const [productList, setProductList] = useState([]);
-  const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(()=>{
     getData();
@@ -241,9 +240,17 @@ const isFocused = useIsFocused();
     
   }
 
-  const renderProductList = ({item, index}) => {
+  const renderProductList = ({item, index}: any) => {
     return (
-    <View style={styles.listContainer}>
+    <TouchableOpacity 
+      style={styles.listContainer} 
+      onPress={()=>{
+        navigation.navigate('ProductDetail',{
+          currentItem: item,
+          itemIndex: index,
+        });
+      }}
+    >
       {/* Image Box */}
       <Image
         resizeMode="contain"
@@ -281,7 +288,7 @@ const isFocused = useIsFocused();
           <MCIcon name="delete-outline" size={35} color="#8585f5" />
         </TouchableOpacity>
       </View>
-    </View>)
+    </TouchableOpacity>)
   }
 
   const deleteItemAlert = (item:any) =>
@@ -319,7 +326,7 @@ const isFocused = useIsFocused();
       <View style={styles.row2}>
         <FlatList
           data={productList}
-          keyExtractor={item => item.description}
+          keyExtractor={(item:any) => item.description}
           renderItem={renderProductList}
         />
         

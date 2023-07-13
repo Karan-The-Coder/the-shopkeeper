@@ -62,16 +62,16 @@ const Onboarding = () => {
 
       {/* Login & Sign up buttons ROW */}
       <View style={styles.btnRow}>
-      <TouchableOpacity 
-      onPress={()=>navigation.navigate('Login')}
-      style={[styles.btn,{backgroundColor:'#fdfdfd'}]}>
-        <Text style={styles.btnText}>Login</Text>
-      </TouchableOpacity>
-      <TouchableOpacity 
-      onPress={()=>navigation.navigate('Signup')}
-      style={[styles.btn,{backgroundColor:'#8585f5'}]}>
-        <Text style={styles.btnText}>Signup</Text>
-      </TouchableOpacity>
+        <TouchableOpacity 
+        onPress={()=>navigation.navigate('Login')}
+        style={[styles.btn,{backgroundColor:'#fdfdfd'}]}>
+          <Text style={styles.btnText}>Login</Text>
+        </TouchableOpacity>
+        <TouchableOpacity 
+        onPress={()=>navigation.navigate('Signup')}
+        style={[styles.btn,{backgroundColor:'#8585f5'}]}>
+          <Text style={styles.btnText}>Signup</Text>
+        </TouchableOpacity>
       </View>
 
       {/* Bottom Text ROW */}
