@@ -38,14 +38,14 @@ const AddProduct = ({route}:any) => {
 
   useEffect(()=>{
     getData();
-    if(comeFrom == 'editableItem'){
+    if(comeFrom == 'editableItem' || comeFrom == 'editableItemDetailPage'){
       editItem();
     }
   },[]);
 
   const editItem = async () => {
     try{
-      if(comeFrom == 'editableItem'){
+      if(comeFrom == 'editableItem' || comeFrom == 'editableItemDetailPage'){
         setProductName(editableItem?.name);
         setProductDesc(editableItem?.description);
         setProductPrice(editableItem?.price);
@@ -72,7 +72,7 @@ const AddProduct = ({route}:any) => {
   };
 
   const addProduct = async () => {
-    if(comeFrom === 'editableItem') {
+    if(comeFrom === 'editableItem' || comeFrom === 'editableItemDetailPage') {
     editProduct();
     return;
     }
@@ -101,7 +101,7 @@ const AddProduct = ({route}:any) => {
 
     // Store the object in AsyncStorage
     await AsyncStorage.setItem('ProductsList', JSON.stringify(products));
-    navigation.goBack();
+    navigation.navigate('Dashboard');
 
   };
 
@@ -135,7 +135,7 @@ const AddProduct = ({route}:any) => {
             autoComplete="name"
             returnKeyType="next"
             inputMode="text"
-            placeholder={ comeFrom === 'editableItem' ? productName :"Enter product name"}
+            placeholder={ (comeFrom === 'editableItem' || comeFrom == 'editableItemDetailPage')  ? productName :"Enter product name"}
             placeholderTextColor="gray"
             keyboardType="default"
             style={styles.numberInput}
