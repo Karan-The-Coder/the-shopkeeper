@@ -23,6 +23,13 @@ import FAIcon from 'react-native-vector-icons/FontAwesome5';
 import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+// Product Object
+// 1. id 
+// 2. title
+// 3. description
+// 4. quantity
+// 5. price
+// 6. rating
 
 const Dashboard = () => {
   const isFocused = useIsFocused();
